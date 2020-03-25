@@ -200,6 +200,22 @@ cityscapes_poles = dataset_base.copy({
     'label_map': COCO_LABEL_MAP
 })
 
+# ---------- cityscapes test dataset ----------#
+cityscapes_test = dataset_base.copy({
+    'name': 'Cityscapes test dataset',
+
+    'valid_images': '/home/tunghandsome/Tung/cityscapes/pad_resize/leftImg8bit_val/',
+    'valid_info': '/home/tunghandsome/Tung/cityscapes/poles_anno/instancesonly_filtered_gtFine_val.json',
+
+    'train_images': '/home/tunghandsome/Tung/cityscapes/pad_resize/leftImg8bit_train',
+    'train_info': '/home/tunghandsome/Tung/cityscapes/poles_anno/instancesonly_filtered_gtFine_train.json',
+
+    'has_gt': True,
+
+    'label_map': COCO_LABEL_MAP
+})
+
+
 PASCAL_CLASSES = ("aeroplane", "bicycle", "bird", "boat", "bottle",
                   "bus", "car", "cat", "chair", "cow", "diningtable",
                   "dog", "horse", "motorbike", "person", "pottedplant",
