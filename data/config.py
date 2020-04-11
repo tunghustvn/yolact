@@ -159,6 +159,36 @@ coco2017_testdev_dataset = dataset_base.copy({
 cityscapes = dataset_base.copy({
     'name': 'Cityscapes dataset',
 
+    'valid_images': '/home/tunghandsome/Tung/cityscapes/leftImg8bit/val/images',
+    'valid_info': '/home/tunghandsome/Tung/cityscapes/out_anno/instancesonly_filtered_gtFine_val.json',
+
+    'train_images': '/home/tunghandsome/Tung/cityscapes/leftImg8bit/train/images',
+    'train_info': '/home/tunghandsome/Tung/cityscapes/out_anno/instancesonly_filtered_gtFine_train.json',
+
+    'has_gt': True,
+
+    'label_map': COCO_LABEL_MAP
+})
+
+# ---------- cityscapes dataset ----------#
+cityscapes_pole = dataset_base.copy({
+    'name': 'Cityscapes dataset',
+
+    'valid_images': '/home/tunghandsome/Tung/cityscapes/leftImg8bit/val/images',
+    'valid_info': '/home/tunghandsome/Tung/cityscapes/pole_original/instancesonly_filtered_gtFine_val.json',
+
+    'train_images': '/home/tunghandsome/Tung/cityscapes/leftImg8bit/train/images',
+    'train_info': '/home/tunghandsome/Tung/cityscapes/pole_original/instancesonly_filtered_gtFine_train.json',
+
+    'has_gt': True,
+
+    'label_map': COCO_LABEL_MAP
+})
+
+# ---------- cityscapes dataset ----------#
+cityscapes_resize = dataset_base.copy({
+    'name': 'Cityscapes dataset',
+
     'valid_images': '/home/tunghandsome/Tung/cityscapes/resized_images/leftImg8bit_val',
     'valid_info': '/home/tunghandsome/Tung/cityscapes/out_anno/instancesonly_filtered_gtFine_val.json',
 
@@ -209,6 +239,21 @@ cityscapes_test = dataset_base.copy({
 
     'train_images': '/home/tunghandsome/Tung/cityscapes/pad_resize/leftImg8bit_train',
     'train_info': '/home/tunghandsome/Tung/cityscapes/poles_anno/instancesonly_filtered_gtFine_train.json',
+
+    'has_gt': True,
+
+    'label_map': COCO_LABEL_MAP
+})
+
+# ---------- cityscapes pad test dataset ----------#
+cityscapes_pad_test = dataset_base.copy({
+    'name': 'Cityscapes test dataset',
+
+    'valid_images': '/home/tunghandsome/Tung/cityscapes/pad_resize/leftImg8bit_test/',
+    'valid_info': '/home/tunghandsome/Tung/cityscapes/pad_anno/instancesonly_filtered_gtFine_test.json',
+
+    'train_images': '/home/tunghandsome/Tung/cityscapes/pad_resize/leftImg8bit_train',
+    'train_info': '/home/tunghandsome/Tung/cityscapes/pad_anno/instancesonly_filtered_gtFine_train.json',
 
     'has_gt': True,
 
@@ -889,6 +934,28 @@ yolact_plus_resnet50_config = yolact_plus_base_config.copy({
     }),
 })
 
+###-----------------------YOLACT++ Tung Config--------------------------------------------------###
+yolact_plus_tung_config = yolact_base_config.copy({
+    'name': 'yolact_plus_tung',
+
+    'backbone': resnet101_dcn_inter3_backbone.copy({
+        'selected_layers': list(range(1, 4)),
+
+        'pred_aspect_ratios': [ [[1, 1/4, 1/20]] ]*5,
+        'pred_scales': [[i * 2 ** (j / 3.0) for j in range(3)] for i in [24, 48, 96, 192, 384]],
+        'use_pixel_scales': True,
+        'preapply_sqrt': False,
+        'use_square_anchors': False,
+    }),
+
+    'use_maskiou': True,
+    'maskiou_net': [(8, 3, {'stride': 2}), (16, 3, {'stride': 2}), (32, 3, {'stride': 2}), (64, 3, {'stride': 2}), (128, 3, {'stride': 2})],
+    'maskiou_alpha': 25,
+    'rescore_bbox': False,
+    'rescore_mask': True,
+
+    'discard_mask_area': -1,
+})
 
 # Default config
 cfg = yolact_base_config.copy()
