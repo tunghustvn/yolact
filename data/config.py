@@ -204,11 +204,11 @@ cityscapes_poles = dataset_base.copy({
 cityscapes_traffic = dataset_base.copy({
     'name': 'Cityscapes dataset traffic',
 
-    'valid_images': '/home/tunghandsome/Tung/cityscapes/snake_dataset/coco_img/val',
-    'valid_info': '/home/tunghandsome/Tung/cityscapes/traffic_anno/instancesonly_filtered_gtFine_val.json',
+    'valid_images': './data/cityscapes/coco_img/val',
+    'valid_info': './data/cityscapes/coco_ann/traffic_anno/instancesonly_filtered_gtFine_val.json',
 
-    'train_images': '/home/tunghandsome/Tung/cityscapes/snake_dataset/coco_img/train',
-    'train_info': '/home/tunghandsome/Tung/cityscapes/traffic_anno/instancesonly_filtered_gtFine_train.json',
+    'train_images': './data/cityscapes/coco_img/train',
+    'train_info': './data/cityscapes/coco_ann/traffic_anno/instancesonly_filtered_gtFine_train.json',
 
     'has_gt': True,
 
