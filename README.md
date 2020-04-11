@@ -63,11 +63,18 @@ Some examples from our YOLACT base model (33.5 fps on a Titan Xp and 29.8 mAP on
 
 # Cityscapes dataset
  - All scripts to work with Cityscapes dataset in the folder **data_scripts**
-  - *anchor_box.py*: Use K means algorithm to find suitable anchor box.
-  - *convert_cityscapes_to_COCO.py*: Convert annotations from cityscapes type to COCO type.
-  - *json2instanceIDpng_dataset.py*: Create instanceID files from annotations.
-  - *pad_resize_convert_cityscapes_to_COCO.py*: Convert annotations from cityscapes type to COCO type with resized and padded images.
-  - *resized_convert_cityscapes_to_COCO.py*: Convert annotations from cityscapes type to COCO type with resized images.
+   - *anchor_box.py*: Use K means algorithm to find suitable anchor box.
+   - *convert_cityscapes_to_COCO.py*: Convert annotations from cityscapes type to COCO type.
+   - *json2instanceIDpng_dataset.py*: Create instanceID files from annotations.
+   - *pad_resize_convert_cityscapes_to_COCO.py*: Convert annotations from cityscapes type to COCO type with resized and padded images.
+   - *resized_convert_cityscapes_to_COCO.py*: Convert annotations from cityscapes type to COCO type with resized images.
+## Add a new categories in InstanceIDpng:
+  - In `json2instanceIDpng_dataset.py`:
+    - Change the *hasInstances* element of the new categories to True
+    - Add the new categories name to *category_instancesonly*
+  - Run:
+    `python json2instanceIDpng_dataset.py`
+
 
 # Evaluation
 Here are our YOLACT models (released on April 5th, 2019) along with their FPS on a Titan Xp and mAP on `test-dev`:
