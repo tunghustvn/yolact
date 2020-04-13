@@ -894,6 +894,31 @@ yolact_poles_config = yolact_base_config.copy({
     }),
 })
 
+#----------------------- YOLACT TRAFFIC CONFIG ----------------------#
+yolact_traffic_config = yolact_base_config.copy({
+    'name': 'yolact_traffic',
+
+    'lr': 1e-5,
+
+    'masks_to_train': 300,
+    'max_size': 550,
+
+    'use_maskiou':True,
+    'discard_mask_area':-1,
+    'use_mask_scoring':True,
+
+    # Backbone Settings
+    'backbone': resnet101_backbone.copy({
+        'selected_layers': list(range(1, 4)),
+        'use_pixel_scales': True,
+        'preapply_sqrt': False,
+        'use_square_anchors': True, # This is for backward compatability with a bug
+
+        'pred_aspect_ratios': [ [[1/4, 1, 4]] ]*5,
+        'pred_scales': [[24], [48], [96], [192], [384]],
+    }),
+})
+
 # ----------------------- YOLACT++ CONFIGS ----------------------- #
 
 yolact_plus_base_config = yolact_base_config.copy({
