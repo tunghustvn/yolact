@@ -212,13 +212,13 @@ def obj_cls2cat_id(object_cls):
         
         # 'rider': ,
         # 'car':          3,
-        # 'truck':        8,
+        # 'truck':        10,
         # 'bus':          6,
         # 'train':        7,
         # 'motorcycle':   4,
         # 'bicycle':      2,
         'traffic light':  9,
-        'traffic sign':   10,
+        'traffic sign':   8,
         'pole':           5,         ### street sign
         # 'person':       1,
     }
@@ -369,9 +369,6 @@ def convert_cityscapes_instance_only(
         with open(os.path.join(out_dir, json_name % data_set), 'w') as outfile:
             outfile.write(json.dumps(ann_dict))
 
-# data_dir = '/media/tungngo/DATA/Chuyen_mon/AI/dataset/city_scape'
-# out_dir = '/media/tungngo/DATA/Chuyen_mon/AI/dataset/city_scape/cityscapes2coco'
-
 if __name__ == '__main__':
 
     desire_size = 2048
@@ -385,5 +382,3 @@ if __name__ == '__main__':
         convert_coco_stuff_mat(args.datadir, args.outdir)
     else:
         print("Dataset not supported: %s" % args.dataset)
-
-    # convert_cityscapes_instance_only(data_dir, out_dir)
