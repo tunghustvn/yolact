@@ -54,6 +54,11 @@ COCO_LABEL_MAP = { 1:  1,  2:  2,  3:  3,  4:  4,  5:  5,  6:  6,  7:  7,  8:  8
                   74: 65, 75: 66, 76: 67, 77: 68, 78: 69, 79: 70, 80: 71, 81: 72,
                   82: 73, 84: 74, 85: 75, 86: 76, 87: 77, 88: 78, 89: 79, 90: 80}
 
+CITYSCAPES_CLASSES = ('person', 'bicycle', 'car', 'motorcycle', 'pole', 'bus',
+                      'train', 'traffic sign', 'traffic light', 'truck')
+
+CITYSCAPES_LABEL_MAP = { 1:  1,  2:  2,  3:  3,  4:  4,  5:  5,  6:  6,  7:  7,  8:  8,
+                         9:  9, 10: 10}
 
 
 # ----------------------- CONFIG CLASS ----------------------- #
@@ -128,6 +133,29 @@ dataset_base = Config({
     'label_map': None
 })
 
+cityscapes_base = Config({
+    'name': 'Base Cityscapes Dataset',
+
+    # Training images and annotations
+    'train_images': './data/cityscapes/coco_img/train',
+    'train_info':   'path_to_annotation_file',
+
+    # Validation images and annotations.
+    'valid_images': './data/cityscapes/coco_img/val', 
+    'valid_info':   'path_to_annotation_file',
+
+    # Whether or not to load GT. If this is False, eval.py quantitative evaluation won't work.
+    'has_gt': True,
+
+    # A list of names for each of you classes.
+    'class_names': CITYSCAPES_CLASSES,
+
+    # COCO class ids aren't sequential, so this is a bandage fix. If your ids aren't sequential,
+    # provide a map from category_id -> index in class_names + 1 (the +1 is there because it's 1-indexed).
+    # If not specified, this just assumes category ids start at 1 and increase sequentially.
+    'label_map': None
+})
+
 coco2014_dataset = dataset_base.copy({
     'name': 'COCO 2014',
     
@@ -156,7 +184,7 @@ coco2017_testdev_dataset = dataset_base.copy({
 })
 
 # ---------- cityscapes dataset ----------#
-cityscapes = dataset_base.copy({
+cityscapes = cityscapes_base.copy({
     'name': 'Cityscapes dataset',
 
     'valid_images': '/home/tunghandsome/Tung/cityscapes/leftImg8bit/val/images',
@@ -197,11 +225,11 @@ cityscapes_resize = dataset_base.copy({
 
     'has_gt': True,
 
-    'label_map': COCO_LABEL_MAP
+    'label_map': CITYSCAPES_LABEL_MAP
 })
 
 # ---------- cityscapes resize_pad dataset ----------#
-cityscapes_pad = dataset_base.copy({
+cityscapes_pad = cityscapes_base.copy({
     'name': 'Cityscapes dataset',
 
     'valid_images': '/home/tunghandsome/Tung/cityscapes/pad_resize/leftImg8bit_val',
@@ -212,11 +240,11 @@ cityscapes_pad = dataset_base.copy({
 
     'has_gt': True,
 
-    'label_map': COCO_LABEL_MAP
+    'label_map': CITYSCAPES_LABEL_MAP
 })
 
 # ---------- cityscapes poles dataset ----------#
-cityscapes_poles = dataset_base.copy({
+cityscapes_poles = cityscapes_base.copy({
     'name': 'Cityscapes dataset only poles',
 
     'valid_images': '/home/tunghandsome/Tung/cityscapes/pad_resize/leftImg8bit_val',
@@ -227,26 +255,26 @@ cityscapes_poles = dataset_base.copy({
 
     'has_gt': True,
 
-    'label_map': COCO_LABEL_MAP
+    'label_map': CITYSCAPES_LABEL_MAP
 })
 
 # ---------- cityscapes poles dataset ----------#
-cityscapes_traffic = dataset_base.copy({
+cityscapes_traffic = cityscapes_base.copy({
     'name': 'Cityscapes dataset traffic',
 
-    'valid_images': './data/cityscapes/coco_img/val',
+    #'valid_images': './data/cityscapes/coco_img/val',
     'valid_info': './data/cityscapes/coco_ann/traffic_anno/instancesonly_filtered_gtFine_val.json',
 
-    'train_images': './data/cityscapes/coco_img/train',
+    #'train_images': './data/cityscapes/coco_img/train',
     'train_info': './data/cityscapes/coco_ann/traffic_anno/instancesonly_filtered_gtFine_train.json',
 
     'has_gt': True,
 
-    'label_map': COCO_LABEL_MAP
+    'label_map': CITYSCAPES_LABEL_MAP
 })
 
 # ---------- cityscapes test dataset ----------#
-cityscapes_test = dataset_base.copy({
+cityscapes_test = cityscapes_base.copy({
     'name': 'Cityscapes test dataset',
 
     'valid_images': '/home/tunghandsome/Tung/cityscapes/pad_resize/leftImg8bit_val/',
@@ -257,7 +285,7 @@ cityscapes_test = dataset_base.copy({
 
     'has_gt': True,
 
-    'label_map': COCO_LABEL_MAP
+    'label_map': CITYSCAPES_LABEL_MAP
 })
 
 # ---------- cityscapes pad test dataset ----------#

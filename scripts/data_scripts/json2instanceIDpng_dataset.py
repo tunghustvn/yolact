@@ -299,10 +299,3 @@ if __name__ == "__main__":
         convert_coco_stuff_mat(args.datadir, args.outdir)
     else:
         print("Dataset not supported: %s" % args.dataset)
-
-    # data_dir = '/media/tungngo/DATA/Chuyen_mon/AI/dataset/city_scape'
-    # out_dir = '/media/tungngo/DATA/Chuyen_mon/AI/dataset/city_scape/cityscapes2coco'
-    # json2instance(data_dir, out_dir)
-
-
-    # main(sys.argv[1:])
