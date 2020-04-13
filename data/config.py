@@ -187,11 +187,11 @@ coco2017_testdev_dataset = dataset_base.copy({
 cityscapes = cityscapes_base.copy({
     'name': 'Cityscapes dataset',
 
-    'valid_images': '/home/tunghandsome/Tung/cityscapes/resized_images/leftImg8bit_val',
-    'valid_info': '/home/tunghandsome/Tung/cityscapes/out_anno/instancesonly_filtered_gtFine_val.json',
+    # 'valid_images': '/home/tunghandsome/Tung/cityscapes/resized_images/leftImg8bit_val',
+    'valid_info': './data/cityscapes/coco_ann/instancesonly_filtered_gtFine_val.json',
 
-    'train_images': '/home/tunghandsome/Tung/cityscapes/resized_images/leftImg8bit_train',
-    'train_info': '/home/tunghandsome/Tung/cityscapes/out_anno/instancesonly_filtered_gtFine_train.json',
+    # 'train_images': '/home/tunghandsome/Tung/cityscapes/resized_images/leftImg8bit_train',
+    'train_info': './data/cityscapes/coco_ann/instancesonly_filtered_gtFine_train.json',
 
     'has_gt': True,
 
@@ -898,7 +898,7 @@ yolact_poles_config = yolact_base_config.copy({
 yolact_traffic_config = yolact_base_config.copy({
     'name': 'yolact_traffic',
 
-    'lr': 1e-5,
+    'lr': 1e-3,
 
     'masks_to_train': 300,
     'max_size': 550,
