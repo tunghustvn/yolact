@@ -187,41 +187,11 @@ coco2017_testdev_dataset = dataset_base.copy({
 cityscapes = cityscapes_base.copy({
     'name': 'Cityscapes dataset',
 
-    'valid_images': '/home/tunghandsome/Tung/cityscapes/leftImg8bit/val/images',
-    'valid_info': '/home/tunghandsome/Tung/cityscapes/out_anno/instancesonly_filtered_gtFine_val.json',
+    # 'valid_images': '/home/tunghandsome/Tung/cityscapes/resized_images/leftImg8bit_val',
+    'valid_info': './data/cityscapes/coco_ann/instancesonly_filtered_gtFine_val.json',
 
-    'train_images': '/home/tunghandsome/Tung/cityscapes/leftImg8bit/train/images',
-    'train_info': '/home/tunghandsome/Tung/cityscapes/out_anno/instancesonly_filtered_gtFine_train.json',
-
-    'has_gt': True,
-
-    'label_map': COCO_LABEL_MAP
-})
-
-# ---------- cityscapes dataset ----------#
-cityscapes_pole = dataset_base.copy({
-    'name': 'Cityscapes dataset',
-
-    'valid_images': '/home/tunghandsome/Tung/cityscapes/leftImg8bit/val/images',
-    'valid_info': '/home/tunghandsome/Tung/cityscapes/pole_original/instancesonly_filtered_gtFine_val.json',
-
-    'train_images': '/home/tunghandsome/Tung/cityscapes/leftImg8bit/train/images',
-    'train_info': '/home/tunghandsome/Tung/cityscapes/pole_original/instancesonly_filtered_gtFine_train.json',
-
-    'has_gt': True,
-
-    'label_map': COCO_LABEL_MAP
-})
-
-# ---------- cityscapes dataset ----------#
-cityscapes_resize = dataset_base.copy({
-    'name': 'Cityscapes dataset',
-
-    'valid_images': '/home/tunghandsome/Tung/cityscapes/resized_images/leftImg8bit_val',
-    'valid_info': '/home/tunghandsome/Tung/cityscapes/out_anno/instancesonly_filtered_gtFine_val.json',
-
-    'train_images': '/home/tunghandsome/Tung/cityscapes/resized_images/leftImg8bit_train',
-    'train_info': '/home/tunghandsome/Tung/cityscapes/out_anno/instancesonly_filtered_gtFine_train.json',
+    # 'train_images': '/home/tunghandsome/Tung/cityscapes/resized_images/leftImg8bit_train',
+    'train_info': './data/cityscapes/coco_ann/instancesonly_filtered_gtFine_train.json',
 
     'has_gt': True,
 
@@ -267,6 +237,21 @@ cityscapes_traffic = cityscapes_base.copy({
 
     #'train_images': './data/cityscapes/coco_img/train',
     'train_info': './data/cityscapes/coco_ann/traffic_anno/instancesonly_filtered_gtFine_train.json',
+
+    'has_gt': True,
+
+    'label_map': CITYSCAPES_LABEL_MAP
+})
+
+# ---------- cityscapes poles dataset ----------#
+cityscapes_traffic_no_pole = cityscapes_base.copy({
+    'name': 'Cityscapes dataset traffic',
+
+    #'valid_images': './data/cityscapes/coco_img/val',
+    'valid_info': './data/cityscapes/coco_ann/traffic_without_pole/instancesonly_filtered_gtFine_val.json',
+
+    #'train_images': './data/cityscapes/coco_img/train',
+    'train_info': './data/cityscapes/coco_ann/traffic_without_pole/instancesonly_filtered_gtFine_train.json',
 
     'has_gt': True,
 
@@ -919,6 +904,31 @@ yolact_resnet50_pascal_config = yolact_resnet50_config.copy({
 #----------------------- YOLACT POLES CONFIG ----------------------#
 yolact_poles_config = yolact_base_config.copy({
     'name': 'yolact_poles',
+
+    'masks_to_train': 300,
+    'max_size': 550,
+
+    'use_maskiou':True,
+    'discard_mask_area':-1,
+    'use_mask_scoring':True,
+
+    # Backbone Settings
+    'backbone': resnet101_backbone.copy({
+        'selected_layers': list(range(1, 4)),
+        'use_pixel_scales': True,
+        'preapply_sqrt': False,
+        'use_square_anchors': True, # This is for backward compatability with a bug
+
+        'pred_aspect_ratios': [ [[1/4, 1, 4]] ]*5,
+        'pred_scales': [[24], [48], [96], [192], [384]],
+    }),
+})
+
+#----------------------- YOLACT TRAFFIC CONFIG ----------------------#
+yolact_traffic_config = yolact_base_config.copy({
+    'name': 'yolact_traffic',
+
+    'lr': 1e-3,
 
     'masks_to_train': 300,
     'max_size': 550,
