@@ -348,8 +348,6 @@ def convert_cityscapes_instance_only(
                             ann['iscrowd'] = 0
                             ann['area'] = obj['pixelCount'] # *r_img
 
-                            
-
                             annotations.append(ann)
 
         ann_dict['images'] = images
