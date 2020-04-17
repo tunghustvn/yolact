@@ -131,7 +131,7 @@ def parse_args():
     ''' Set arguments '''
     parser = argparse.ArgumentParser(description='Convert dataset')
     parser.add_argument(
-        '--dataset', help="cocostuff, cityscapes", default=None, type=str)
+        '--dataset', help="cocostuff, cityscapes", default='cityscapes_instance_only', type=str)
     parser.add_argument(
         '--outdir', help="output dir for json files", default=None, type=str)
     parser.add_argument(
@@ -374,9 +374,13 @@ if __name__ == '__main__':
     cal_ratio(desire_size, old_size)
 
     args = parse_args()
+
+    convert_cityscapes_instance_only(args.datadir, args.outdir)
+    '''
     if args.dataset == "cityscapes_instance_only":
         convert_cityscapes_instance_only(args.datadir, args.outdir)
     elif args.dataset == "cocostuff":
         convert_coco_stuff_mat(args.datadir, args.outdir)
     else:
         print("Dataset not supported: %s" % args.dataset)
+    '''

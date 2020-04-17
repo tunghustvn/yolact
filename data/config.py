@@ -243,22 +243,38 @@ cityscapes_traffic = cityscapes_base.copy({
     'label_map': CITYSCAPES_LABEL_MAP
 })
 
-# ---------- cityscapes poles dataset ----------#
+# ---------- cityscapes traffic without pole dataset ----------#
 cityscapes_traffic_no_pole = cityscapes_base.copy({
     'name': 'Cityscapes dataset traffic',
 
     #'valid_images': './data/cityscapes/coco_img/val',
-    'valid_images': '/home/tunghandsome/Tung/cityscapes/leftImg8bit/val/images',
-    'valid_info': '/home/tunghandsome/Tung/cityscapes/traffic_without_pole/instancesonly_filtered_gtFine_val.json',
+    # 'valid_images': '/home/tunghandsome/Tung/cityscapes/leftImg8bit/val/images',
+    #'valid_info': '/home/tunghandsome/Tung/cityscapes/traffic_without_pole/instancesonly_filtered_gtFine_val.json',
+    'valid_info': './data/cityscapes/coco_ann/traffic_without_pole/instancesonly_filtered_gtFine_val.json',
 
     #'train_images': './data/cityscapes/coco_img/train',
-    'train_images': '/home/tunghandsome/Tung/cityscapes/leftImg8bit/train/images',
-    'train_info': '/home/tunghandsome/Tung/cityscapes/traffic_without_pole/instancesonly_filtered_gtFine_train.json',
+    # 'train_images': '/home/tunghandsome/Tung/cityscapes/leftImg8bit/train/images',
+    # 'train_info': '/home/tunghandsome/Tung/cityscapes/traffic_without_pole/instancesonly_filtered_gtFine_train.json',
+    'valid_info': './data/cityscapes/coco_ann/traffic_without_pole/instancesonly_filtered_gtFine_val.json',
 
     'has_gt': True,
 
     'label_map': CITYSCAPES_LABEL_MAP
 })
+
+# ---------- cityscapes traffic test dataset ----------#
+cityscapes_traffic_test = cityscapes_base.copy({
+    'name': 'Cityscapes dataset traffic',
+
+    'valid_images': './data/cityscapes/coco_img/test',
+    'valid_info': './data/cityscapes/coco_ann/traffic_without_pole/instancesonly_filtered_gtFine_test.json',
+
+    'has_gt': True,
+
+    'label_map': CITYSCAPES_LABEL_MAP
+})
+
+
 
 # ---------- cityscapes test dataset ----------#
 cityscapes_test = cityscapes_base.copy({

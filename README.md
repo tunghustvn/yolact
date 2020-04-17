@@ -73,13 +73,13 @@ Some examples from our YOLACT base model (33.5 fps on a Titan Xp and 29.8 mAP on
     - Change the *hasInstances* element of the new categories to True
     - Add the new categories name to *category_instancesonly*
   - Run:
-    `python scripts/data_scripts/json2instanceIDpng_dataset.py --dataset=cityscapes_instance_only --outdir=/home/tunghandsome/Tung/cityscapes/gtFine_trainvaltest/ --datadir=/home/tunghandsome/Tung/cityscapes/`
+    `python scripts/data_scripts/json2instanceIDpng_dataset.py --dataset=cityscapes_instance_only --outdir=/home/tunghandsome/Tung/yolact/data/cityscapes/gtFine_trainvaltest/ --datadir=/home/tunghandsome/Tung/yolact/data/cityscapes/`
 ## Add a new categories in *resized_convert_cityscapes_to_COCO.py*:
  - In `resized_convert_cityscapes_to_COCO.py`:
     - Change the *hasInstances* element of the new categories to True
     - Add the new categories name to *category_instancesonly* and *switcher*
   - Run:
-    `python resized_convert_cityscapes_to_COCO.py --dataset=cityscapes_instance_only --outdir=/home/tunghandsome/Tung/cityscapes/out_anno/ --datadir=/home/tunghandsome/Tung/cityscapes/`
+    `python scripts/data_scripts/resized_convert_cityscapes_to_COCO.py --dataset=cityscapes_instance_only --outdir=/home/tunghandsome/Tung/yolact/data/cityscapes/out_anno/ --datadir=/home/tunghandsome/Tung/cityscapes/`
 
 
 # Evaluation

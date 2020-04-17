@@ -1,3 +1,7 @@
+$:  command
+[]: error
+{}: fixed
+
 #### 1: 
 
 ```
@@ -21,6 +25,11 @@ Traceback (most recent call last):
 ```
 
 `RuntimeError: cannot reshape tensor of 0 elements into shape [0, -1] because the unspecified dimension size -1 can be any value and is ambiguous`
+
+[
+id error: frankfurt_000001_062793_leftImg8bit.png
+"munster_000051_000019_leftImg8bit.png"
+]
 
 #### 2:
 
