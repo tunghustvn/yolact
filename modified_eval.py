@@ -393,8 +393,9 @@ def prep_metrics(ap_data, dets, img, gt, gt_masks, h, w, num_crowd, image_id, de
             gt_boxes[:, [0, 2]] *= w
             gt_boxes[:, [1, 3]] *= h
             gt_classes = list(gt[:, 4].astype(int))
+            print(gt_masks)
             gt_masks = torch.Tensor(gt_masks).view(-1, h*w)
-
+            print(gt_masks) ###Tung them vao de debug
             if num_crowd > 0:
                 split = lambda x: (x[-num_crowd:], x[:-num_crowd])
                 crowd_boxes  , gt_boxes   = split(gt_boxes)

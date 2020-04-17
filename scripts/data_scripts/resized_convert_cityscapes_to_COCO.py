@@ -211,16 +211,16 @@ def obj_cls2cat_id(object_cls):
 
         
         # 'rider': ,
-        # 'car':          3,
+        'car':          3,
         # 'truck':        10,
-        # 'bus':          6,
-        # 'train':        7,
-        # 'motorcycle':   4,
-        # 'bicycle':      2,
+        'bus':          6,
+        'train':        7,
+        'motorcycle':   4,
+        'bicycle':      2,
         'traffic light':  9,
         'traffic sign':   8,
-        'pole':           5,         ### street sign
-        # 'person':       1,
+        # 'pole':           5,         ### street sign
+        'person':       1,
     }
     return switcher.get(object_cls,"Invalid id")
 
@@ -247,15 +247,15 @@ def convert_cityscapes_instance_only(
     category_dict = {}
 
     category_instancesonly = [
-        # 'person',
+        'person',
         # 'rider',
-        # 'car',
+        'car',
         # 'truck',
-        # 'bus',
-        # 'train',
-        # 'motorcycle',
-        # 'bicycle',
-        'pole',
+        'bus',
+        'train',
+        'motorcycle',
+        'bicycle',
+        # 'pole',
         'traffic light',
         'traffic sign',
     ]
