@@ -1,4 +1,25 @@
 #### 1: 
+
+```
+Computing validation mAP (this may take a while)...
+
+Traceback (most recent call last):
+  File "train.py", line 504, in <module>
+    train()
+  File "train.py", line 371, in train
+    compute_validation_map(epoch, iteration, yolact_net, val_dataset, log if args.log else None)
+  File "train.py", line 492, in compute_validation_map
+    val_info = eval_script.evaluate(yolact_net, dataset, train_mode=True)
+  File "/home/hanguyen/Tung_yolact/yolact/eval.py", line 956, in evaluate
+    prep_metrics(ap_data, preds, img, gt, gt_masks, h, w, num_crowd, dataset.ids[image_idx], detections)
+  File "/home/hanguyen/Tung_yolact/yolact/eval.py", line 435, in prep_metrics
+    mask_iou_cache = _mask_iou(masks, gt_masks)
+  File "/home/hanguyen/Tung_yolact/yolact/eval.py", line 378, in _mask_iou
+    ret = mask_iou(mask1, mask2, iscrowd)
+  File "/home/hanguyen/Tung_yolact/yolact/layers/box_utils.py", line 108, in mask_iou
+    masks_b = masks_b.view(masks_b.size(0), -1)
+```
+
 `RuntimeError: cannot reshape tensor of 0 elements into shape [0, -1] because the unspecified dimension size -1 can be any value and is ambiguous`
 
 #### 2:
