@@ -255,7 +255,7 @@ cityscapes_traffic_no_pole = cityscapes_base.copy({
     #'train_images': './data/cityscapes/coco_img/train',
     # 'train_images': '/home/tunghandsome/Tung/cityscapes/leftImg8bit/train/images',
     # 'train_info': '/home/tunghandsome/Tung/cityscapes/traffic_without_pole/instancesonly_filtered_gtFine_train.json',
-    'train_info': './data/cityscapes/coco_ann/traffic_without_pole/instancesonly_filtered_gtFine_val.json',
+    'train_info': './data/cityscapes/coco_ann/traffic_without_pole/instancesonly_filtered_gtFine_train.json',
 
     'has_gt': True,
 
