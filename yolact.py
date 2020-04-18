@@ -401,6 +401,8 @@ class Yolact(nn.Module):
 
         self.backbone = construct_backbone(cfg.backbone)
 
+        self.freeze_backbone()
+
         if cfg.freeze_bn:
             self.freeze_bn()
 
@@ -555,7 +557,7 @@ class Yolact(nn.Module):
     ### Freeze backbone
     def freeze_backbone(self, enable=False):
         for param in self.backbone.parameters():
-            param.requires_grad = False
+            param.requires_grad = enable
     ### End freeze backbone
 
 
