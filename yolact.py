@@ -552,6 +552,13 @@ class Yolact(nn.Module):
         if cfg.freeze_bn:
             self.freeze_bn()
 
+    ### Freeze backbone
+    def freeze_backbone(self, enable=False):
+        for param in self.backbone.parameters():
+            param.requires_grad = False
+    ### End freeze backbone
+
+
     def freeze_bn(self, enable=False):
         """ Adapted from https://discuss.pytorch.org/t/how-to-train-with-frozen-batchnorm/12106/8 """
         for module in self.modules():

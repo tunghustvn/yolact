@@ -376,13 +376,13 @@ backbone_base = Config({
 })
 
 resnet101_backbone = backbone_base.copy({
-    'name': 'ResNet101',
+    'name': 'ResNet101', 
     'path': 'resnet101_reducedfc.pth',
     'type': ResNetBackbone,
     'args': ([3, 4, 23, 3],),
     'transform': resnet_transform,
 
-    'selected_layers': list(range(2, 8)),
+    'selected_layers': list(range(2, 8)),  # selected_layers: The indices of the conv layers to use for prediction.
     'pred_scales': [[1]]*6,
     'pred_aspect_ratios': [ [[0.66685089, 1.7073535, 0.87508774, 1.16524493, 0.49059086]] ] * 6,
 })
@@ -951,9 +951,11 @@ yolact_traffic_config = yolact_base_config.copy({
     'masks_to_train': 300,
     'max_size': 550,
 
+    'freeze_bn': True,
+
     'use_maskiou':True,
     'discard_mask_area':-1,
-    'use_mask_scoring':True,
+    'use_mask_scoring':True,resnet101_backbone
 
     # Backbone Settings
     'backbone': resnet101_backbone.copy({
