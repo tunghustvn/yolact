@@ -955,7 +955,7 @@ yolact_traffic_config = yolact_base_config.copy({
 
     'use_maskiou':True,
     'discard_mask_area':-1,
-    'use_mask_scoring':True,resnet101_backbone
+    'use_mask_scoring':True,
 
     # Backbone Settings
     'backbone': resnet101_backbone.copy({
