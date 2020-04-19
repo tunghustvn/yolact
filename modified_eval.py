@@ -908,6 +908,7 @@ def evaluate(net:Yolact, dataset, train_mode=False):
             'box' : [[APDataObject() for _ in cfg.dataset.class_names] for _ in iou_thresholds],
             'mask': [[APDataObject() for _ in cfg.dataset.class_names] for _ in iou_thresholds]
         }
+        print(ap_data)
         detections = Detections()
     else:
         timer.disable('Load Data')
