@@ -908,7 +908,6 @@ def evaluate(net:Yolact, dataset, train_mode=False):
             'box' : [[APDataObject() for _ in cfg.dataset.class_names] for _ in iou_thresholds],
             'mask': [[APDataObject() for _ in cfg.dataset.class_names] for _ in iou_thresholds]
         }
-        print(ap_data)
         detections = Detections()
     else:
         timer.disable('Load Data')
@@ -948,7 +947,8 @@ def evaluate(net:Yolact, dataset, train_mode=False):
                 batch = Variable(img.unsqueeze(0))
                 if args.cuda:
                     batch = batch.cuda()
-            print(gt_masks.size())
+            print(gt_masks)
+            print('abcd1234\n')
 
 
             with timer.env('Network Extra'):
@@ -958,7 +958,7 @@ def evaluate(net:Yolact, dataset, train_mode=False):
                 img_numpy = prep_display(preds, img, h, w)
             elif args.benchmark:
                 prep_benchmark(preds, h, w)
-            elif gt_masks.size():
+            elif gt_masks.any():
                 continue
             else:
                 prep_metrics(ap_data, preds, img, gt, gt_masks, h, w, num_crowd, dataset.ids[image_idx], detections)
