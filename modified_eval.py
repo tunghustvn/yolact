@@ -958,7 +958,7 @@ def evaluate(net:Yolact, dataset, train_mode=False):
                 img_numpy = prep_display(preds, img, h, w)
             elif args.benchmark:
                 prep_benchmark(preds, h, w)
-            elif gt_masks.any():
+            elif not(gt_masks.any()):
                 continue
             else:
                 prep_metrics(ap_data, preds, img, gt, gt_masks, h, w, num_crowd, dataset.ids[image_idx], detections)
