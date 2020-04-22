@@ -263,11 +263,11 @@ cityscapes_traffic_no_pole = cityscapes_base.copy({
 })
 
 # ---------- cityscapes traffic test dataset ----------#
-cityscapes_traffic_test = cityscapes_base.copy({
-    'name': 'Cityscapes dataset traffic',
+cityscapes_traffic_train_valid = cityscapes_base.copy({
+    'name': 'Cityscapes dataset traffic train validation',
 
-    'valid_images': './data/cityscapes/coco_img/test',
-    'valid_info': './data/cityscapes/coco_ann/traffic_without_pole/instancesonly_filtered_gtFine_test.json',
+    'valid_images': './data/cityscapes/coco_img/train',
+    'valid_info': './data/cityscapes/coco_ann/traffic_without_pole/instancesonly_filtered_gtFine_train.json',
 
     'has_gt': True,
 
