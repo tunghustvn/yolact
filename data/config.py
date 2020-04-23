@@ -247,14 +247,8 @@ cityscapes_traffic = cityscapes_base.copy({
 cityscapes_traffic_no_pole = cityscapes_base.copy({
     'name': 'Cityscapes dataset traffic',
 
-    #'valid_images': './data/cityscapes/coco_img/val',
-    # 'valid_images': '/home/tunghandsome/Tung/cityscapes/leftImg8bit/val/images',
-    #'valid_info': '/home/tunghandsome/Tung/cityscapes/traffic_without_pole/instancesonly_filtered_gtFine_val.json',
     'valid_info': './data/cityscapes/coco_ann/traffic_without_pole/instancesonly_filtered_gtFine_val.json',
 
-    #'train_images': './data/cityscapes/coco_img/train',
-    # 'train_images': '/home/tunghandsome/Tung/cityscapes/leftImg8bit/train/images',
-    # 'train_info': '/home/tunghandsome/Tung/cityscapes/traffic_without_pole/instancesonly_filtered_gtFine_train.json',
     'train_info': './data/cityscapes/coco_ann/traffic_without_pole/instancesonly_filtered_gtFine_train.json',
 
     'has_gt': True,
@@ -1012,19 +1006,19 @@ yolact_plus_tung_config = yolact_base_config.copy({
     'name': 'yolact_plus_tung',
 
     # dw' = momentum * dw - lr * (grad + decay * w)
-    'lr': 1e-4,
+    'lr': 1e-3,
     'momentum': 0.9,
     'decay': 5e-4,
 
     # For each lr step, what to multiply the lr with
     'gamma': 0.1,
-    'lr_steps': (28000, 36000, 40000),
+    'lr_steps': (40000, 80000, 160000),
 
     # Initial learning rate to linearly warmup from (if until > 0)
     'lr_warmup_init': 1e-4,
 
     # If > 0 then increase the lr linearly from warmup_init to lr each iter for until iters
-    'lr_warmup_until': 100,
+    'lr_warmup_until': 500,
 
     'backbone': resnet101_dcn_inter3_backbone.copy({
         'selected_layers': list(range(1, 4)),
@@ -1043,7 +1037,6 @@ yolact_plus_tung_config = yolact_base_config.copy({
     'rescore_mask': True,
 
     'discard_mask_area': -1,
-
 
 })
 

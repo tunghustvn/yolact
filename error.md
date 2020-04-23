@@ -31,6 +31,10 @@ id error: frankfurt_000001_062793_leftImg8bit.png
 "munster_000051_000019_leftImg8bit.png"
 ]
 
+{
+Just skip all empty images. Changed code in **modified_eval.py** to fix this error.
+}
+
 #### 2:
 
 ```
@@ -65,6 +69,24 @@ Original Traceback (most recent call last):
   File "/home/hanguyen/Tung_yolact/yolact/layers/modules/multibox_loss.py", line 546, in lincomb_mask_loss
     pos_idx_t = idx_t[idx, cur_pos]
 RuntimeError: copy_if failed to synchronize: device-side assert triggered
+
+```
+
+#### 3:
+
+When evaluate model with **trained model=yolact_plus_tung_84_30000.pth** and **config=yolact_plus_base_config** **dataset=cityscapes_traffic_no_pole**
+
+
+```
+
+Traceback (most recent call last):
+  File "modified_eval.py", line 1113, in <module>
+    evaluate(net, dataset)
+  File "modified_eval.py", line 964, in evaluate
+    prep_metrics(ap_data, preds, img, gt, gt_masks, h, w, num_crowd, dataset.ids[image_idx], detections)
+  File "modified_eval.py", line 471, in prep_metrics
+    ap_obj = ap_data[iou_type][iouIdx][_class]
+IndexError: list index out of range
 
 ```
 
