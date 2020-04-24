@@ -401,7 +401,7 @@ class Yolact(nn.Module):
 
         self.backbone = construct_backbone(cfg.backbone)
 
-        self.freeze_backbone()
+        # self.freeze_backbone()
 
         if cfg.freeze_bn:
             self.freeze_bn()

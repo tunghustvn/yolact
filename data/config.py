@@ -1006,7 +1006,7 @@ yolact_plus_tung_config = yolact_base_config.copy({
     'name': 'yolact_plus_tung',
 
     # dw' = momentum * dw - lr * (grad + decay * w)
-    'lr': 1e-3,
+    'lr': 1e-4,
     'momentum': 0.9,
     'decay': 5e-4,
 
@@ -1015,7 +1015,7 @@ yolact_plus_tung_config = yolact_base_config.copy({
     'lr_steps': (40000, 80000, 160000),
 
     # Initial learning rate to linearly warmup from (if until > 0)
-    'lr_warmup_init': 1e-4,
+    'lr_warmup_init': 1e-5,
 
     # If > 0 then increase the lr linearly from warmup_init to lr each iter for until iters
     'lr_warmup_until': 500,
