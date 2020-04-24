@@ -168,12 +168,6 @@ def instances2dict_with_polygons(imageFileList):
         img = Image.open(imageFileName) ### need to run: pip install Pillow
 
         imgNp = np.array(img)
-        # print(imgNp[1000][512])
-
-        instances_file = open('instanceID','w')
-        for i in range(len(imgNp)):
-            instances_file.write(str(imgNp[i]))
-        instances_file.close()
 
         # Initialize label categories
         instances = {}
@@ -211,16 +205,16 @@ def obj_cls2cat_id(object_cls):
 
         
         # 'rider': ,
-        'car':          3,
+        # 'car':          3,
         # 'truck':        10,
-        'bus':          6,
-        'train':        7,
-        'motorcycle':   4,
-        'bicycle':      2,
+        # 'bus':          6,
+        # 'train':        7,
+        # 'motorcycle':   4,
+        # 'bicycle':      2,
         'traffic light':  9,
         'traffic sign':   8,
         # 'pole':           5,         ### street sign
-        'person':       1,
+        # 'person':       1,
     }
     return switcher.get(object_cls,"Invalid id")
 
@@ -247,14 +241,14 @@ def convert_cityscapes_instance_only(
     category_dict = {}
 
     category_instancesonly = [
-        'person',
+        # 'person',
         # 'rider',
-        'car',
+        # 'car',
         # 'truck',
-        'bus',
-        'train',
-        'motorcycle',
-        'bicycle',
+        # 'bus',
+        # 'train',
+        # 'motorcycle',
+        # 'bicycle',
         # 'pole',
         'traffic light',
         'traffic sign',
@@ -376,11 +370,3 @@ if __name__ == '__main__':
     args = parse_args()
 
     convert_cityscapes_instance_only(args.datadir, args.outdir)
-    '''
-    if args.dataset == "cityscapes_instance_only":
-        convert_cityscapes_instance_only(args.datadir, args.outdir)
-    elif args.dataset == "cocostuff":
-        convert_coco_stuff_mat(args.datadir, args.outdir)
-    else:
-        print("Dataset not supported: %s" % args.dataset)
-    '''
