@@ -90,5 +90,8 @@ IndexError: list index out of range
 
 ```
 
-{https://github.com/dbolya/yolact/issues/31}
+{
++) https://github.com/dbolya/yolact/issues/31
+Có vấn đề khi convert ra annotation. Có thể có vật thể nằm ngoài danh sách category_id.
+}
 
