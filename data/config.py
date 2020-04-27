@@ -990,6 +990,8 @@ yolact_plus_base_config = yolact_base_config.copy({
 yolact_plus_resnet50_config = yolact_plus_base_config.copy({
     'name': 'yolact_plus_resnet50',
 
+
+
     'backbone': resnet50_dcnv2_backbone.copy({
         'selected_layers': list(range(1, 4)),
         
@@ -1004,6 +1006,8 @@ yolact_plus_resnet50_config = yolact_plus_base_config.copy({
 ###-----------------------YOLACT++ Tung Config--------------------------------------------------###
 yolact_plus_tung_config = yolact_base_config.copy({
     'name': 'yolact_plus_tung',
+
+    'num_classes': len(cityscapes.class_names) + 1,
 
     # dw' = momentum * dw - lr * (grad + decay * w)
     'lr': 1e-4,
