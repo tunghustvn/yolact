@@ -1047,7 +1047,7 @@ yolact_plus_tung_config = yolact_base_config.copy({
     'backbone': resnet101_dcn_inter3_backbone.copy({
         'selected_layers': list(range(1, 4)),
 
-        'pred_aspect_ratios': [ [[1, 1/2, 2]] ]*5,
+        'pred_aspect_ratios': [ [[3.50, 1.25, 0.58]] ]*5,
         'pred_scales': [[i * 2 ** (j / 3.0) for j in range(3)] for i in [24, 48, 96, 192, 384]],
         'use_pixel_scales': True,
         'preapply_sqrt': False,
