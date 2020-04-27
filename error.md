@@ -92,6 +92,9 @@ IndexError: list index out of range
 
 {
 +) https://github.com/dbolya/yolact/issues/31
+
 Có vấn đề khi convert ra annotation. Có thể có vật thể nằm ngoài danh sách category_id.
+
++) Config lại số class của yolact_plus_tung_config bằng với số class COCO ban đầu. Mạng sẽ ko bị lỗi này nữa.
 }
 
