@@ -98,3 +98,23 @@ Có vấn đề khi convert ra annotation. Có thể có vật thể nằm ngoà
 +) Config lại số class của yolact_plus_tung_config bằng với số class COCO ban đầu. Mạng sẽ ko bị lỗi này nữa.
 }
 
+#### 4:
+
+When training with yolact_plus_base_config:
+
+```
+Traceback (most recent call last):
+  File "train.py", line 504, in <module>
+    train()
+  File "train.py", line 307, in train
+    losses = net(datum)
+  File "/home/hanguyen/Tung_deep_snake/snake_gpu6/lib/python3.7/site-packages/torch/nn/modules/module.py", line 532, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/hanguyen/Tung_deep_snake/snake_gpu6/lib/python3.7/site-packages/torch/nn/parallel/data_parallel.py", line 153, in forward
+    return self.gather(outputs, self.output_device)
+  File "train.py", line 168, in gather
+    out[k] = torch.stack([output[k].to(output_device) for output in outputs])
+  File "train.py", line 168, in <listcomp>
+    out[k] = torch.stack([output[k].to(output_device) for output in outputs])
+KeyError: 'I'
+```
