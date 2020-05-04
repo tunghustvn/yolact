@@ -1027,27 +1027,27 @@ yolact_plus_resnet50_config = yolact_plus_base_config.copy({
 yolact_plus_tung_config = yolact_base_config.copy({
     'name': 'yolact_plus_tung',
 
-    'num_classes': len(cityscapes.class_names) + 1,
+    ### 'num_classes': len(cityscapes.class_names) + 1,
 
     # dw' = momentum * dw - lr * (grad + decay * w)
-    'lr': 1e-4,
-    'momentum': 0.9,
-    'decay': 5e-4,
+    ### 'lr': 1e-4,
+    ### 'momentum': 0.9,
+    ### 'decay': 5e-4,
 
     # For each lr step, what to multiply the lr with
-    'gamma': 0.1,
-    'lr_steps': (40000, 80000, 160000),
+    ### 'gamma': 0.1,
+    ### 'lr_steps': (40000, 80000, 160000),
 
     # Initial learning rate to linearly warmup from (if until > 0)
-    'lr_warmup_init': 1e-5,
+    ### 'lr_warmup_init': 1e-5,
 
     # If > 0 then increase the lr linearly from warmup_init to lr each iter for until iters
-    'lr_warmup_until': 500,
+    ### 'lr_warmup_until': 500,
 
     'backbone': resnet101_dcn_inter3_backbone.copy({
         'selected_layers': list(range(1, 4)),
 
-        'pred_aspect_ratios': [ [[3.50, 1.25, 0.58]] ]*5,
+        'pred_aspect_ratios': [ [[1, 1/2, 2]] ]*5,
         'pred_scales': [[i * 2 ** (j / 3.0) for j in range(3)] for i in [24, 48, 96, 192, 384]],
         'use_pixel_scales': True,
         'preapply_sqrt': False,
@@ -1060,7 +1060,7 @@ yolact_plus_tung_config = yolact_base_config.copy({
     'rescore_bbox': False,
     'rescore_mask': True,
 
-    'discard_mask_area': -1,
+    'discard_mask_area': 2,
 
 })
 
