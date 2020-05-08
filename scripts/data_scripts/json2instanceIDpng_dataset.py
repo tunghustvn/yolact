@@ -140,6 +140,20 @@ def parse_args():
 
 def json2instance(data_dir, out_dir):
 
+    # gtCoarse dataset
+    sets = [
+        'gtCoarse_val',
+        'gtCoarse_train',
+        'gtCoarse_train_extra',
+    ]
+    ann_dirs = [
+        'gtCoarse/val',
+        'gtCoarse/train',
+        'gtCoarse/train_extra',
+    ]
+
+    # gtFine dataset
+    '''
     sets = [
         'gtFine_val',
         'gtFine_train',
@@ -150,6 +164,7 @@ def json2instance(data_dir, out_dir):
         'gtFine_trainvaltest/gtFine/train',
         'gtFine_trainvaltest/gtFine/test',
     ]
+    '''
 
     # trainIds = False
 
