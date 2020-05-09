@@ -276,6 +276,21 @@ cityscapes_traffic_no_pole = cityscapes_base.copy({
     'label_map': CITYSCAPES_LABEL_MAP
 })
 
+# ---------- cityscapes poles dataset ----------#
+cityscapes_traffic_coarse = cityscapes_base.copy({
+    'name': 'Cityscapes dataset traffic',
+
+    # 'valid_images': './data/cityscapes/coco_img/val',
+    'valid_info': './data/cityscapes/coco_ann/traffic_anno/instancesonly_filtered_gtFine_val.json',
+
+    'train_images': './data/cityscapes/coco_img/train_extra',
+    'train_info': './data/cityscapes/coco_ann/gtCoarse/traffic_anno/instancesonly_filtered_gtCoarse_train_extra.json',
+
+    'has_gt': True,
+
+    'label_map': CITYSCAPES_LABEL_MAP
+})
+
 # ---------- cityscapes traffic test dataset ----------#
 cityscapes_traffic_train_valid = cityscapes_base.copy({
     'name': 'Cityscapes dataset traffic train validation',
