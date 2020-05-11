@@ -281,7 +281,7 @@ cityscapes_traffic_coarse = cityscapes_base.copy({
     'name': 'Cityscapes dataset traffic',
 
     # 'valid_images': './data/cityscapes/coco_img/val',
-    'valid_info': './data/cityscapes/coco_ann/traffic_anno/instancesonly_filtered_gtFine_val.json',
+    'valid_info': './data/cityscapes/coco_ann/gtCoarse/traffic_anno/instancesonly_filtered_gtCoarse_val.json',
 
     'train_images': './data/cityscapes/coco_img/train_extra',
     'train_info': './data/cityscapes/coco_ann/gtCoarse/traffic_anno/instancesonly_filtered_gtCoarse_train_extra.json',
