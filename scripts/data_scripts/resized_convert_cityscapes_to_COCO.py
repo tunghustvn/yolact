@@ -301,7 +301,8 @@ def convert_cityscapes_instance_only(
                     image['width'] = json_ann['imgWidth'] # *r_img
                     image['height'] = json_ann['imgHeight'] # *r_img
                     image['file_name'] = filename[:-len(
-                        ends_in % data_set.split('_')[0])] + 'leftImg8bit.png'
+                        ends_in % data_set.split('_')[0])] + 'rightImg8bit.png'
+                        # ends_in % data_set.split('_')[0])] + 'leftImg8bit.png'
                     image['seg_file_name'] = filename[:-len(
                         ends_in % data_set.split('_')[0])] + \
                         '%s_instanceIds_test.png' % data_set.split('_')[0]
