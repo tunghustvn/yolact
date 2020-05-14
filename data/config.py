@@ -308,7 +308,7 @@ cityscapes_traffic_train_valid_coarse = cityscapes_base.copy({
     'name': 'Cityscapes dataset traffic train validation',
 
     'valid_images': './data/cityscapes/coco_img/train_extra',
-    'valid_info': './data/cityscapes/coco_ann/gtCoarse/traffic_anno/instancesonly_filtered_gtFine_train_extra.json',
+    'valid_info': './data/cityscapes/coco_ann/gtCoarse/traffic_anno/instancesonly_filtered_gtCoarse_train_extra.json',
 
     'has_gt': True,
 
