@@ -303,6 +303,18 @@ cityscapes_traffic_train_valid = cityscapes_base.copy({
     'label_map': CITYSCAPES_LABEL_MAP
 })
 
+# ---------- cityscapes traffic test dataset ----------#
+cityscapes_traffic_train_valid_coarse = cityscapes_base.copy({
+    'name': 'Cityscapes dataset traffic train validation',
+
+    'valid_images': './data/cityscapes/coco_img/train_extra',
+    'valid_info': './data/cityscapes/coco_ann/gtCoarse/traffic_anno/instancesonly_filtered_gtFine_train_extra.json',
+
+    'has_gt': True,
+
+    'label_map': CITYSCAPES_LABEL_MAP
+})
+
 
 
 # ---------- cityscapes test dataset ----------#
