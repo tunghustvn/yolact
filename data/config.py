@@ -975,7 +975,7 @@ yolact_poles_config = yolact_base_config.copy({
 yolact_traffic_config = yolact_base_config.copy({
     'name': 'yolact_traffic',
 
-    'lr': 1e-3,
+ ###   'lr': 1e-3,
 
     'masks_to_train': 300,
     'max_size': 550,
@@ -993,7 +993,7 @@ yolact_traffic_config = yolact_base_config.copy({
         'preapply_sqrt': False,
         'use_square_anchors': True, # This is for backward compatability with a bug
 
-        'pred_aspect_ratios': [ [[1/4, 1, 4]] ]*5,
+        'pred_aspect_ratios': [ [[1/2, 1, 2]] ]*5,
         'pred_scales': [[24], [48], [96], [192], [384]],
     }),
 })
