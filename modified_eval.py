@@ -184,6 +184,7 @@ def prep_display(dets_out, img, h, w, undo_transform=True, class_color=False, ma
                 color_cache[on_gpu][color_idx] = color
             return color
 
+    '''
     # First, draw the masks on the GPU where we can do it really fast
     # Beware: very fast but possibly unintelligible mask-drawing code ahead
     # I wish I had access to OpenGL or Vulkan but alas, I guess Pytorch tensor operations will have to suffice
@@ -208,7 +209,16 @@ def prep_display(dets_out, img, h, w, undo_transform=True, class_color=False, ma
             masks_color_summand += masks_color_cumul.sum(dim=0)
 
         img_gpu = img_gpu * inv_alph_masks.prod(dim=0) + masks_color_summand
-    
+    '''
+
+    ### Crop instance
+    if args.display_masks and cfg.eval_mask_branch and num_dets_to_consider > 0:
+        # After this, mask is of size [num_dets, h, w, 1]
+        masks = masks[:num_dets_to_consider, :, :, None]
+        img_gpu = (masks.sum(dim=0) >= 1).float().expand(-1, -1, 3).contiguous()
+    else:
+        img_gpu *= 0
+
     if args.display_fps:
             # Draw the box for the fps on the GPU
         font_face = cv2.FONT_HERSHEY_DUPLEX
@@ -218,6 +228,8 @@ def prep_display(dets_out, img, h, w, undo_transform=True, class_color=False, ma
         text_w, text_h = cv2.getTextSize(fps_str, font_face, font_scale, font_thickness)[0]
 
         img_gpu[0:text_h+8, 0:text_w+8] *= 0.6 # 1 - Box alpha
+
+    ### End crop instance
 
 
     # Then draw the stuff that needs to be done on the cpu
