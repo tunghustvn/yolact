@@ -211,9 +211,9 @@ def obj_cls2cat_id(object_cls):
         # 'train':        7,
         # 'motorcycle':   4,
         # 'bicycle':      2,
-        'traffic light':  9,
-        'traffic sign':   8,
-        # 'pole':           5,         ### street sign
+        # 'traffic light':  9,
+        # 'traffic sign':   8,
+        'pole':           5,         ### street sign
         # 'person':       1,
     }
     return switcher.get(object_cls,"Invalid id")
@@ -223,6 +223,7 @@ def convert_cityscapes_instance_only(
         data_dir, out_dir):
     """Convert from cityscapes format to COCO instance seg format - polygons"""
     # gtCoarse dataset
+    '''
     sets = [
         'gtCoarse_val',
         'gtCoarse_train',
@@ -233,9 +234,10 @@ def convert_cityscapes_instance_only(
         'gtCoarse/train',
         'gtCoarse/train_extra',
     ]
+    '''
 
     # gtFine dataset
-    '''
+    
     sets = [
         'gtFine_val',
         'gtFine_train',
@@ -246,7 +248,7 @@ def convert_cityscapes_instance_only(
         'gtFine_trainvaltest/gtFine/train',
         'gtFine_trainvaltest/gtFine/test',
     ]
-    '''
+    
 
     json_name = 'instancesonly_filtered_%s.json'
     ends_in = '%s_polygons.json'
@@ -264,9 +266,9 @@ def convert_cityscapes_instance_only(
         # 'train',
         # 'motorcycle',
         # 'bicycle',
-        # 'pole',
-        'traffic light',
-        'traffic sign',
+        'pole',
+        # 'traffic light',
+        # 'traffic sign',
     ]
 
     path_to_json_files = os.getcwd()
@@ -344,7 +346,7 @@ def convert_cityscapes_instance_only(
 
                             xyxy_box = poly_to_box(ann['segmentation'])
                             xywh_box = xyxy_to_xywh(xyxy_box)
-                            if xywh_box[2] < 10:
+                            if (xywh_box[2] < 10) and (xywh_box[2] > 250):
                                 continue
                             ann['bbox'] = xywh_box
 

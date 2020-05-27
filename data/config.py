@@ -237,11 +237,11 @@ cityscapes_pad = cityscapes_base.copy({
 cityscapes_poles = cityscapes_base.copy({
     'name': 'Cityscapes dataset only poles',
 
-    'valid_images': '/home/tunghandsome/Tung/cityscapes/pad_resize/leftImg8bit_val',
-    'valid_info': '/home/tunghandsome/Tung/cityscapes/poles_anno/instancesonly_filtered_gtFine_val.json',
+    # 'valid_images': '/home/tunghandsome/Tung/cityscapes/pad_resize/leftImg8bit_val',
+    'valid_info': './data/cityscapes/coco_ann/pole_ann/instancesonly_filtered_gtFine_val.json',
 
-    'train_images': '/home/tunghandsome/Tung/cityscapes/pad_resize/leftImg8bit_train',
-    'train_info': '/home/tunghandsome/Tung/cityscapes/poles_anno/instancesonly_filtered_gtFine_train.json',
+    # 'train_images': '/home/tunghandsome/Tung/cityscapes/pad_resize/leftImg8bit_train',
+    'train_info': './data/cityscapes/coco_ann/pole_ann/instancesonly_filtered_gtFine_train.json',
 
     'has_gt': True,
 
