@@ -132,7 +132,7 @@ coco_cats = {} # Call prep_coco_cats to fill this
 coco_cats_inv = {}
 color_cache = defaultdict(lambda: {})
 
-def prep_display(dets_out, img, h, w, undo_transform=True, class_color=False, mask_alpha=0.45, fps_str=''):
+def prep_display(dets_out, img, cv2_img, h, w, undo_transform=True, class_color=False, mask_alpha=0.45, fps_str=''):
     """
     Note: If undo_transform=False then im_h and im_w are allowed to be None.
     """
@@ -256,6 +256,10 @@ def prep_display(dets_out, img, h, w, undo_transform=True, class_color=False, ma
                 text_color = [255, 255, 255]
 
                 cv2.rectangle(img_numpy, (x1, y1), (x1 + text_w, y1 - text_h - 4), color, -1)
+
+                ### Crop img
+                crop_image = cv2_img[x1:x2, y1:y2]
+                cv2.imwrite('/home/hanguyen/video/crop_img/'+j+'.jpg',crop_image)
                 cv2.putText(img_numpy, text_str, text_pt, font_face, font_scale, text_color, font_thickness, cv2.LINE_AA)
             
     
@@ -319,15 +323,13 @@ class Detections:
 
 
 
-        ### Add to crop img
-        with open('/home/hanguyen/video/captured_img/annotations.json', 'r') as crop_img:
-            # json.dump(data, f)
-            for ele in crop_img['images']:
-
-
-                img =imread('/home/hanguyen/video/captured_img/'+ele['file_name'])
-                crop_img = img[bbox[0]:bbox[2], bbox[1]:bbox[3]]
-                cv2.imwrite('/home/hanguyen/video/crop_img/' + str(id)+'.jpg',crop_img)
+        # ### Add to crop img
+        # with open('/home/hanguyen/video/captured_img/annotations.json', 'r') as crop_img:
+        #     # json.dump(data, f)
+        #     for ele in crop_img['images']:
+        #         img =imread('/home/hanguyen/video/captured_img/'+ele['file_name'])
+        #         crop_img = img[bbox[0]:bbox[2], bbox[1]:bbox[3]]
+        #         cv2.imwrite('/home/hanguyen/video/crop_img/' + str(id)+'.jpg',crop_img)
 
     def add_mask(self, image_id:int, category_id:int, segmentation:np.ndarray, score:float):
         """ The segmentation should be the full mask, the size of the image and with size [h, w]. """
@@ -609,7 +611,10 @@ def evalimage(net:Yolact, path:str, save_path:str=None):
     batch = FastBaseTransform()(frame.unsqueeze(0))
     preds = net(batch)
 
-    img_numpy = prep_display(preds, frame, None, None, undo_transform=False)
+    ### Add to crop img
+    crop_img = cv2.imread(path)
+
+    img_numpy = prep_display(preds, frame, crop_img, None, None, undo_transform=False)
     
     if save_path is None:
         img_numpy = img_numpy[:, :, (2, 1, 0)]
