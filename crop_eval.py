@@ -29,6 +29,8 @@ from PIL import Image
 import matplotlib.pyplot as plt
 import cv2
 
+count = 0
+
 def str2bool(v):
     if v.lower() in ('yes', 'true', 't', 'y', '1'):
         return True
@@ -263,7 +265,8 @@ def prep_display(dets_out, img, cv2_img, h, w, undo_transform=True, class_color=
                 crop_image = cv2_img[y1:y1+y2,x1:x1+x2]
                 print(x1)
                 print("Test crop")
-                cv2.imwrite('/home/hanguyen/video/crop_img/'+j+'.jpg',crop_image)
+                cv2.imwrite('/home/hanguyen/video/crop_img/'+count+'.jpg',crop_image)
+                count = count + 1
                 cv2.putText(img_numpy, text_str, text_pt, font_face, font_scale, text_color, font_thickness, cv2.LINE_AA)
             
     
