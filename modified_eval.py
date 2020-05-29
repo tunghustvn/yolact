@@ -333,7 +333,7 @@ class Detections:
 
         ### Add to crop img
         crop_img = img[bbox[0]:bbox[2], bbox[1]:bbox[3]]
-        cv2.imwrite('/home/hanguyen/video/' + str(id)+'.jpg',frame)
+        cv2.imwrite('/home/hanguyen/video/crop_img/' + str(id)+'.jpg',crop_img)
 
     def add_mask(self, image_id:int, category_id:int, segmentation:np.ndarray, score:float):
         """ The segmentation should be the full mask, the size of the image and with size [h, w]. """
