@@ -136,6 +136,8 @@ def prep_display(dets_out, img, cv2_img, h, w, undo_transform=True, class_color=
     """
     Note: If undo_transform=False then im_h and im_w are allowed to be None.
     """
+
+    print('tes')
     if undo_transform:
         img_numpy = undo_image_transformation(img, w, h)
         img_gpu = torch.Tensor(img_numpy).cuda()
