@@ -248,6 +248,8 @@ def prep_display(dets_out, img, cv2_img, h, w, undo_transform=True, class_color=
 
             if args.display_text:
                 _class = cfg.dataset.class_names[classes[j]]
+                print(_class)
+
                 text_str = '%s: %.2f' % (_class, score) if args.display_scores else _class
 
                 font_face = cv2.FONT_HERSHEY_DUPLEX
@@ -262,12 +264,13 @@ def prep_display(dets_out, img, cv2_img, h, w, undo_transform=True, class_color=
                 cv2.rectangle(img_numpy, (x1, y1), (x1 + text_w, y1 - text_h - 4), color, -1)
 
                 ### Crop img
-                crop_image = cv2_img[y1:y1+y2,x1:x1+x2]
-                print(x1)
-                print("Test crop")
-                global count
-                cv2.imwrite('/home/hanguyen/video/crop_img/'+str(count)+'.jpg',crop_image)
-                count = count + 1
+                if(_class == 'motorcycle'):
+                    crop_image = cv2_img[y1:y1+y2,x1:x1+x2]
+                    print(x1)
+                    print("Test crop")
+                    global count
+                    cv2.imwrite('/home/hanguyen/video/crop_img/'+str(count)+'.jpg',crop_image)
+                    count = count + 1
                 cv2.putText(img_numpy, text_str, text_pt, font_face, font_scale, text_color, font_thickness, cv2.LINE_AA)
             
     
