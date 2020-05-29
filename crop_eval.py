@@ -265,6 +265,7 @@ def prep_display(dets_out, img, cv2_img, h, w, undo_transform=True, class_color=
                 crop_image = cv2_img[y1:y1+y2,x1:x1+x2]
                 print(x1)
                 print("Test crop")
+                global count
                 cv2.imwrite('/home/hanguyen/video/crop_img/'+count+'.jpg',crop_image)
                 count = count + 1
                 cv2.putText(img_numpy, text_str, text_pt, font_face, font_scale, text_color, font_thickness, cv2.LINE_AA)
@@ -620,6 +621,7 @@ def evalimage(net:Yolact, path:str, save_path:str=None):
 
     ### Add to crop img
     crop_img = cv2.imread(path)
+    print('evalimage')
 
     img_numpy = prep_display(preds, frame, crop_img, None, None, undo_transform=False)
     
