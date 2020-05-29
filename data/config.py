@@ -315,6 +315,18 @@ cityscapes_traffic_train_valid_coarse = cityscapes_base.copy({
     'label_map': CITYSCAPES_LABEL_MAP
 })
 
+# ------------Captured video------------------------#
+capture_video = dataset_base.copy({
+    'name': 'Capture video',
+    
+    # 'train_info': './data/coco/annotations/instances_train2014.json',
+    # 'valid_info': './data/coco/annotations/instances_val2014.json',
+
+    'valid_images': '/home/hanguyen/video/captured_img',
+
+    'label_map': COCO_LABEL_MAP
+})
+
 
 
 # ---------- cityscapes test dataset ----------#

@@ -352,6 +352,8 @@ class Detections:
         for data, path in dump_arguments:
             with open(path, 'w') as f:
                 json.dump(data, f)
+
+
     
     def dump_web(self):
         """ Dumps it in the format for my web app. Warning: bad code ahead! """
