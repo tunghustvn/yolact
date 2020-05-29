@@ -316,7 +316,7 @@ class Detections:
         self.bbox_data = []
         self.mask_data = []
 
-    def add_bbox(self, image_id:int, category_id:int, bbox:list, score:float):
+    def add_bbox(self, image_id:int, category_id:int, bbox:list, score:float, id:int):
         """ Note that bbox should be a list or tuple of (x1, y1, x2, y2) """
         bbox = [bbox[0], bbox[1], bbox[2]-bbox[0], bbox[3]-bbox[1]]
 
@@ -329,6 +329,11 @@ class Detections:
             'bbox': bbox,
             'score': float(score)
         })
+
+
+        ### Add to crop img
+        crop_img = img[bbox[0]:bbox[2], bbox[1]:bbox[3]]
+        cv2.imwrite('/home/hanguyen/video/' + str(id)+'.jpg',frame)
 
     def add_mask(self, image_id:int, category_id:int, segmentation:np.ndarray, score:float):
         """ The segmentation should be the full mask, the size of the image and with size [h, w]. """
@@ -441,7 +446,7 @@ def prep_metrics(ap_data, dets, img, gt, gt_masks, h, w, num_crowd, image_id, de
             for i in range(masks.shape[0]):
                 # Make sure that the bounding box actually makes sense and a mask was produced
                 if (boxes[i, 3] - boxes[i, 1]) * (boxes[i, 2] - boxes[i, 0]) > 0:
-                    detections.add_bbox(image_id, classes[i], boxes[i,:],   box_scores[i])
+                    detections.add_bbox(image_id, classes[i], boxes[i,:],   box_scores[i], i)
                     detections.add_mask(image_id, classes[i], masks[i,:,:], mask_scores[i])
             return
     
