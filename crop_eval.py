@@ -265,7 +265,8 @@ def prep_display(dets_out, img, cv2_img, h, w, undo_transform=True, class_color=
 
                 ### Crop img
                 if(_class == 'motorcycle'):
-                    crop_image = cv2_img[y1:y1+y2,x1:x1+x2]
+                    crop_image = cv2_img[y1:y2,x1:x2]
+                    # crop_image = cv2_img[x1,]
                     cv2.rectangle(crop_image, (x1, y1), (x1 + text_w, y1 - text_h - 4), color, -1)
                     # cv2.rectangle((y1,y1+y2),(x1,x1+x2))
                     print(x1)
