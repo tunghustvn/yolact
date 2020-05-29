@@ -320,7 +320,7 @@ capture_video = dataset_base.copy({
     'name': 'Capture video',
     
     # 'train_info': './data/coco/annotations/instances_train2014.json',
-    'valid_info': './data/coco/annotations/instances_val2014.json',
+    'valid_info': '/home/hanguyen/video/captured_img/annotations.json',
 
     'valid_images': '/home/hanguyen/video/captured_img',
 
